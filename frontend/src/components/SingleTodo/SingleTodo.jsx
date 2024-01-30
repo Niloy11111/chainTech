@@ -19,9 +19,8 @@ const SingleTodo = ({ item }) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         const res = await axiosPublic.delete(`/tasks/${item._id}`);
-        // console.log(res.data);
+
         if (res.data.deletedCount > 0) {
-          // refetch to update the ui
           refetch();
           Swal.fire({
             position: "top-end",

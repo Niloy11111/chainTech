@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 const Banner = () => {
@@ -16,7 +15,8 @@ const Banner = () => {
             Kanban boards and set up dependencies between related tasks to make
             sure you always stay on schedule.
           </p>
-          <Link to="/login">
+
+          <Link to={`/addTask`}>
             <button className="bg-[#F0483E] px-7 py-3 text-white font-Montserrat font-medium">
               Let's Explore
             </button>

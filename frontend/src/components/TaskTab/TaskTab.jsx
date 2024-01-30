@@ -1,4 +1,3 @@
-import React from "react";
 import SingleTodo from "../SingleTodo/SingleTodo";
 
 const TaskTab = ({ items }) => {

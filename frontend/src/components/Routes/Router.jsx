@@ -29,7 +29,7 @@ const router = createBrowserRouter([
 
         element: <UpdateTask></UpdateTask>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/tasks/${params.id}`),
+          fetch(`https://backend-beta-six-55.vercel.app/tasks/${params.id}`),
       },
     ],
   },

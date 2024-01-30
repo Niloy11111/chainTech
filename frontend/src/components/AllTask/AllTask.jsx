@@ -1,13 +1,10 @@
 import { useState } from "react";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "../../../src/App.css";
-import UseAxiosPublic from "../../Hooks/UseAxiosPublic";
 import UseTask from "../../Hooks/UseTasks";
 import TaskTab from "../TaskTab/TaskTab";
 
 const AllTask = () => {
-  const axiosPublic = UseAxiosPublic();
-
   const [tasks, loading, refetch] = UseTask();
   const [activeTab, setActiveTab] = useState(0);
   const low = tasks?.filter((item) => item.priority === "Low");
@@ -15,12 +12,11 @@ const AllTask = () => {
 
   const moderate = tasks?.filter((item) => item.priority === "Moderate");
 
-  console.log(low);
   return (
     <div className="mx-16 mb-20">
       <h2 className="text-4xl font-Inter font-bold text-center my-8">
         {" "}
-        To Do Task {tasks?.length}{" "}
+        {tasks?.length} To Do Task
       </h2>
 
       <Tabs>
