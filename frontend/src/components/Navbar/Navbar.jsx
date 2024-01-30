@@ -48,58 +48,15 @@ const Navbar = () => {
           All Task
         </NavLink>
       </li>
-
-      <li>
-        <NavLink
-          to="/addAJob"
-          className={({ isActive, isPending }) =>
-            isPending
-              ? "pending"
-              : isActive
-              ? "  bg-[#F0483E] text-[#FFF] px-2  py-2 "
-              : ""
-          }
-        >
-          ADD JOB
-        </NavLink>
-      </li>
-
-      <li>
-        <NavLink
-          to="/myJobs"
-          className={({ isActive, isPending }) =>
-            isPending
-              ? "pending"
-              : isActive
-              ? "  bg-[#F0483E] text-[#FFF] px-2  py-2 "
-              : ""
-          }
-        >
-          MY JOBS
-        </NavLink>
-      </li>
-
-      <li>
-        <NavLink
-          to="/appliedJobs"
-          className={({ isActive, isPending }) =>
-            isPending
-              ? "pending"
-              : isActive
-              ? "  bg-[#F0483E] text-[#FFF] px-2  py-2 "
-              : ""
-          }
-        >
-          APPLIED JOBS
-        </NavLink>
-      </li>
     </>
   );
 
   return (
-    <div className="flex justify-between pt-8 mx-10">
+    <div className="flex justify-between pt-8 mx-16">
       <div>
-        <h2>Task</h2>
+        <h2 className="text-xl font-bold font-Inter">
+          <span className="text-[#FF0000] ">Task</span>Management
+        </h2>
       </div>
 
       <div>

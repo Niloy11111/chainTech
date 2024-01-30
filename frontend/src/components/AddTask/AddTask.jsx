@@ -5,10 +5,14 @@ import UseAxiosPublic from "../../Hooks/UseAxiosPublic";
 const AddTask = () => {
   const axiosPublic = UseAxiosPublic();
 
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const onSubmitAddTask = async (data) => {
-    const formattedDateTime = moment().format("MMM Do YY");
+    const formattedDateTime = moment(data.date).format("MMM Do YY");
     console.log(formattedDateTime);
 
     const taskInfo = {
@@ -41,16 +45,21 @@ const AddTask = () => {
 
         <form>
           <div className="form-control ">
-            <label className="label">
-              <span className="label-text text-xl font-inter ">Title</span>
+            <label className="label ">
+              <span className=" label-text text-xl font-Inter  font-semibold">
+                Title
+              </span>
             </label>
             <input
               {...register("name", { required: true })}
               required
               type="text"
               placeholder="Type here"
-              className="py-3 border pl-3 rounded outline-none input-bordered w-full "
+              className="py-3 mt-2 border pl-3 rounded outline-none input-bordered w-full "
             />
+            {errors.name && (
+              <span className="text-red-600">Title is required</span>
+            )}
           </div>
 
           <div className="flex gap-5">
@@ -58,47 +67,62 @@ const AddTask = () => {
 
             <div className="form-control w-full my-6">
               <label className="label">
-                <span className="label-text text-xl font-inter ">
+                <span className="label-text text-xl font-Inter  font-semibold ">
                   Category{" "}
                 </span>
               </label>
 
               <select
-                defaultValue="default"
+                defaultValue=""
                 {...register("priority", { required: true })}
-                className="py-3 border pl-3 rounded outline-none  w-full "
+                className="py-3 mt-2 border pl-3 rounded outline-none w-full"
               >
-                <option className="" disabled value="default">
-                  Select Your Priority{" "}
+                <option value="" disabled>
+                  Select a Priority
                 </option>
                 <option value="Low">Low</option>
-                <option value="Moderate">Moderate </option>
-                <option value="High">High </option>
+                <option value="Moderate">Moderate</option>
+                <option value="High">High</option>
               </select>
+              {errors.priority && (
+                <span className="text-red-600">Priority is required</span>
+              )}
             </div>
           </div>
 
           <div className="flex gap-4  mb-6">
             <div className="w-full">
-              <h4 className=" mb-2 text-xl font-inter "> Deadlines </h4>
+              <h4 className=" mb-2 text-xl font-Inter  font-semibold ">
+                {" "}
+                Deadlines{" "}
+              </h4>
               <input
-                type="datetime-local"
+                type="date"
                 {...register("date", { required: true })}
                 className="py-3 border pl-3 rounded outline-none w-full"
               />
+              {errors.date && (
+                <span className="text-red-600">Date is required</span>
+              )}
             </div>
           </div>
 
-          <h2 className="text-xl font-inter mb-2">Task Details</h2>
-          <textarea
-            {...register("description")}
-            placeholder="Description"
-            className="py-3 border pl-3 rounded outline-none textarea-lg w-full mb-6"
-          ></textarea>
-
+          <h2 className="text-xl font-Inter  font-semibold mb-2">
+            Task Details
+          </h2>
+          <div>
+            <textarea
+              {...register("description", { required: true })}
+              placeholder="Description"
+              className="py-3 border pl-3 rounded outline-none textarea-lg w-full"
+            ></textarea>
+            {errors.description && (
+              <span className="text-red-600">Description is required</span>
+            )}
+          </div>
           <button onClick={handleSubmit(onSubmitAddTask)} className="">
             <button
-              className="bg-[#F0483E] text-white px-4 py-2 rounded-full"
+              className="bg-[#F0483E] mt-5 text-white px-6 py-2 rounded-full"
               type="primary"
             >
               Add Task
