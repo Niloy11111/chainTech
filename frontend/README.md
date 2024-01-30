@@ -58,3 +58,7 @@
 ### RESTful API
 
 - Designed RESTful API endpoints for CRUD operations.
+
+# Key Decisions Made
+
+- A pivotal decision involved managing task status through patching (/task/:id) and updating the status value with $set from the backend. This process posed a challenge but proved to be both engaging and enjoyable.
